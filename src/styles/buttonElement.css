@@ -1,0 +1,14 @@
+.button__search {
+    width: fit-content;
+    padding:10px 20px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 12px;
+    border-color: transparent;
+
+}
+
+.button__search:hover {
+    background-color: rgba(0,0,0,0.2);
+
+}

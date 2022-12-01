@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { PageWrapper, InputWrapper, InputErrorMessage, PointsWrapper } from './components';
+import SearchQueryProvider from './context/SearchQueryProvider';
+import './styles/formElement.css';
+import './styles/statusElement.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <PageWrapper>
+                <SearchQueryProvider>
+                    <InputWrapper className="form__main " />
+                    <InputErrorMessage className="error__main" />
+                    <PointsWrapper />
+                </SearchQueryProvider>
+            </PageWrapper>
+        </>
+    );
 }
 
 export default App;

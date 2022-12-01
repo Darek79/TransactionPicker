@@ -1,0 +1,6 @@
+.form__main {
+    display: grid;
+    max-width: 350px;
+    margin: 0 auto;
+    gap: 10px;
+}
