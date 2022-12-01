@@ -5,15 +5,13 @@ import './styles/statusElement.css';
 
 function App() {
     return (
-        <>
-            <PageWrapper>
-                <SearchQueryProvider>
-                    <InputWrapper className="form__main " />
-                    <InputErrorMessage className="error__main" />
-                    <PointsWrapper />
-                </SearchQueryProvider>
-            </PageWrapper>
-        </>
+        <PageWrapper>
+            <SearchQueryProvider url="./database/Transactions.json">
+                <InputWrapper className="form__main " />
+                <InputErrorMessage className="error__main" />
+                <PointsWrapper />
+            </SearchQueryProvider>
+        </PageWrapper>
     );
 }
 

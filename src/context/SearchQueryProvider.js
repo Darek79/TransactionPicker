@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import SearchQueryContext from './searchQueryContext';
-import { useFetchUser } from '../hooks/useFetchUser';
-export default function SearchQueryProvider({ children }) {
-    const [value, setValue] = useState('');
+import { useFetchUserFromDB } from './../hooks/useFetchUserFromDB';
+import { useCalcPoints } from '../hooks/useCalcPoints';
 
-    const [transActionArray, transActionDetails, error, isLoading] = useFetchUser(
-        value,
-        './database/Transactions.json'
-    );
+export default function SearchQueryProvider({ url, children }) {
+    const [value, setValue] = useState('');
+    const [userArray, error, isLoading] = useFetchUserFromDB(value, url);
+    const [transActionArray, transActionDetails] = useCalcPoints(userArray, error);
     return (
         <SearchQueryContext.Provider
             value={{ value, setValue, transActionArray, transActionDetails, error, isLoading }}

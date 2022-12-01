@@ -38,6 +38,7 @@ export default function InputWrapper({ ...rest }) {
         inputValueRef.current.focus();
         setValue('');
     }, [inputValueRef, setValue]);
+    
     return (
         <form onSubmit={resetInputValue} ref={formElementRef} {...rest}>
             <Label htmlFor="searchInput" optionalLabelText="Please enter a name :" />

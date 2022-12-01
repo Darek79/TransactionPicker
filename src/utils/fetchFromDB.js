@@ -3,7 +3,6 @@ export default async function fetchFromDB(url) {
         const data = await fetch(url, {
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         });
-        console.log(data);
         if (data.statusText !== 'OK') {
             throw new Error('Something went wrong please try again later');
         }
