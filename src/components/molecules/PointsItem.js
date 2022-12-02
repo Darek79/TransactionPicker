@@ -10,7 +10,7 @@ export default function PointsItem({ total_transactions, points_total, date }) {
                 <span>{`${total_transactions}`}</span>
             </p>
             <p>
-                {`Points total: `}
+                {`Points: `}
                 <span>{`${points_total}`}</span>
             </p>
         </header>

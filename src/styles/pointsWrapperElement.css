@@ -1,37 +1,42 @@
 .pointsWrapper__main {
-    margin:0 auto;
-
+    margin: 0 auto;
 }
 
 .pointsWrapper__main--username {
     text-align: center;
-    padding-top: 40px;
+    padding-top: var(--default_margin_top);
 }
 
 .pointsWrapper__main .pointsWrapper__main--items {
     display: flex;
     gap: 10px;
-    padding-top: 40px;
+    margin-top: var(--default_margin_top);
     justify-content: space-around;
-    font-size: 20px;
+    font-size: var(--default_font_size);
+}
+.pointsWrapper__main .pointsWrapper__main--total {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--default_margin_top);
+    font-size: var(--default_font_size);
+    text-decoration: underline;
 }
 
-.pointsWrapper__main .pointsWrapper__main--items span {
+.pointsWrapper__main .pointsWrapper__main--items span,
+.pointsWrapper__main--total span {
     font-weight: bold;
 }
 
 .pointsWrapper__main--spinner {
     display: flex;
     justify-content: center;
-    height: 120px;
-    padding-top: 30px;
+    height: 7.5rem;
+    padding-top: 1.875rem;
 }
 
 @media screen and (max-width: 700px) {
     .pointsWrapper__main .pointsWrapper__main--items {
         display: grid;
-        margin: 0 auto;
-        gap: 20px;
-
+        gap: 1.25rem;
     }
-  }
+}

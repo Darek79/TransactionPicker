@@ -33,3 +33,36 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+## Available Users
+### You can search for following Users:
+
+"first_name": "Haze",
+"last_name": "Eacott",
+
+"first_name": "Lu",
+"last_name": "Meindl",
+
+"first_name": "Kory",
+"last_name": "Semeradova",
+
+"first_name": "Doy",
+"last_name": "Lusgdin",
+
+"first_name": "Tamarah",
+"last_name": "Andriss",
+
+"first_name": "Paddy",
+"last_name": "Vittery",
+
+"first_name": "Martyn",
+"last_name": "Oakly",
+
+"first_name": "Cristin",
+"last_name": "Pitcaithley",
+
+"first_name": "Audrey",
+"last_name": "Penhaligon",
+
+"first_name": "Sammie",
+"last_name": "Todeo",
