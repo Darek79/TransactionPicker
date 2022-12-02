@@ -6,7 +6,7 @@ import './styles/statusElement.css';
 function App() {
     return (
         <PageWrapper>
-            <SearchQueryProvider url="./database/Transactions.json">
+            <SearchQueryProvider url="/database/Transactions.json">
                 <InputWrapper className="form__main " />
                 <InputErrorMessage className="error__main" />
                 <PointsWrapper />

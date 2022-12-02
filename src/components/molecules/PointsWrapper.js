@@ -21,11 +21,9 @@ export default function PointsWrapper({ ...rest }) {
                     <h2>{`${transActionDetails.first_name} ${transActionDetails.last_name}`}</h2>
                 </div>
             )}
-            <>{console.log(transActionArray)}</>
             <div className="pointsWrapper__main--items">
                 {transActionArray.length > 0 &&
                     transActionArray.map((el, i) => {
-                        console.log('run');
                         return (
                             <PointsItem
                                 key={el.date}
