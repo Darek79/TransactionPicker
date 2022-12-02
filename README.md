@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Install instruction
 
-[App is hosted on Netlify](https://6388300aaf09f13b5a863ab8--relaxed-truffle-32db95.netlify.app/)
+[App is hosted on Netlify](https://relaxed-truffle-32db95.netlify.app/)
 
 Ocne you downloaded the repo, please run `npm install` first.
 After all dependencies were installed you can use `npm run start` to fire up the app.
