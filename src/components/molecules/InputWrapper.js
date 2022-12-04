@@ -38,9 +38,9 @@ export default function InputWrapper({ ...rest }) {
         inputValueRef.current.focus();
         setValue('');
     }, [inputValueRef, setValue]);
-    
+
     return (
-        <form onSubmit={resetInputValue} ref={formElementRef} {...rest}>
+        <form aria-label="form" onSubmit={resetInputValue} ref={formElementRef} {...rest}>
             <Label htmlFor="searchInput" optionalLabelText="Please enter a name :" />
             <Input
                 minLength="3"
@@ -48,8 +48,10 @@ export default function InputWrapper({ ...rest }) {
                 type="text"
                 onKeyDown={getValueByEnter}
                 ref={inputValueRef}
-                name="searchInput"
+                // name="searchInput"
+                id="searchInput"
                 className="input__main"
+                aria-label="searchInput"
             />
             <Button type="button" requiredText="Search" onClick={getValueByButton} className="button__search" />
         </form>

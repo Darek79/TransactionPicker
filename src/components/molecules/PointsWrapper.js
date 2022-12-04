@@ -26,6 +26,7 @@ export default function PointsWrapper({ ...rest }) {
                     transActionArray.map((el, i) => {
                         return (
                             <PointsItem
+                                data-testid={`points-value-${i}`}
                                 key={el.date}
                                 date={el.date}
                                 total_transactions={
