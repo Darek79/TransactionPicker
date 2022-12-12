@@ -13,7 +13,6 @@ export default function PointsWrapper({ ...rest }) {
             </div>
         );
     }
-    console.log(transActionArray);
     return (
         <div className="pointsWrapper__main">
             {!transActionArray.length ? null : (
