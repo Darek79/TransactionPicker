@@ -1,26 +1,25 @@
 import { createRef, useRef, useEffect, useContext } from 'react';
 import SearchQueryContext from '../../context/searchQueryContext';
-import { sanitizeInput } from '../../utils/sanitizeInput';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Label from '../atoms/Label';
 import './../../styles/buttonElement.css';
 import './../../styles/inputElement.css';
 
-export default function InputWrapper({ ...rest }) {
+export default function InputWrapper({ sanitizeHanlder,...rest }) {
     const { value, setValue } = useContext(SearchQueryContext);
     const inputValueRef = createRef();
     const formElementRef = useRef();
     function getValueByEnter(event) {
         if (event.key === 'Enter' && inputValueRef.current.value.length > 3) {
-            setValue(sanitizeInput(inputValueRef.current.value));
+            setValue(sanitizeHanlder(inputValueRef.current.value));
         }
     }
 
     function getValueByButton(event) {
         event.preventDefault();
         if (inputValueRef.current.value.length > 3) {
-            setValue(sanitizeInput(inputValueRef.current.value));
+            setValue(sanitizeHanlder(inputValueRef.current.value));
         }
     }
 
@@ -43,6 +42,7 @@ export default function InputWrapper({ ...rest }) {
         <form aria-label="form" onSubmit={resetInputValue} ref={formElementRef} {...rest}>
             <Label htmlFor="searchInput" optionalLabelText="Please enter a name :" />
             <Input
+
                 minLength="3"
                 maxLength="50"
                 type="text"

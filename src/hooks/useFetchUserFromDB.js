@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import fetchFromDB from '../utils/fetchFromDB';
 import { filterForUser } from '../utils/filterForUser';
 
-export function useFetchUserFromDB(value, url) {
+export function useFetchUserFromDB(value, url, fetchHandler) {
     const [isLoading, setLoading] = useState(false);
     const [error, setErrorMessage] = useState('');
     const [userArray, setUserArray] = useState([]);
     useEffect(() => {
         if (value) {
             setLoading(p => !p);
-            fetchFromDB(url).then(fetchedTransactions => {
+            fetchHandler(url).then(fetchedTransactions => {
                 setErrorMessage(p => '');
                 if (Array.isArray(fetchedTransactions)) {
                     const userArray = filterForUser(fetchedTransactions, value);
@@ -26,7 +25,7 @@ export function useFetchUserFromDB(value, url) {
                 }
             });
         }
-    }, [value, url]);
+    }, [value, url, fetchHandler]);
 
     return [userArray, error, isLoading];
 }

@@ -16,6 +16,7 @@ export function useCalcPoints(userArray, error) {
 
     useEffect(() => {
         if (userArray.length && !error) {
+            console.log(userArray);
             const [{ first_name, last_name, transactions }] = sortUserAmountArray(userArray);
             const transactionsSplittedInMonths = getMonthIndexes(transactions);
             const readyTransactions = createTransactionData(transactionsSplittedInMonths, transactions);
