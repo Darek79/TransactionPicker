@@ -13,7 +13,7 @@ export default function PointsWrapper({ ...rest }) {
             </div>
         );
     }
-
+    console.log(transActionArray);
     return (
         <div className="pointsWrapper__main">
             {!transActionArray.length ? null : (
@@ -26,6 +26,9 @@ export default function PointsWrapper({ ...rest }) {
                     transActionArray.map((el, i) => {
                         return (
                             <PointsItem
+                                date_txt={`Date: `}
+                                transaction_txt={`Total transactions: `}
+                                points_txt={`Total points: `}
                                 data-testid={`points-value-${i}`}
                                 key={el.date}
                                 date={el.date}

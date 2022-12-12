@@ -6,7 +6,7 @@ import Label from '../atoms/Label';
 import './../../styles/buttonElement.css';
 import './../../styles/inputElement.css';
 
-export default function InputWrapper({ sanitizeHanlder,...rest }) {
+export default function InputWrapper({ sanitizeHanlder, ...rest }) {
     const { value, setValue } = useContext(SearchQueryContext);
     const inputValueRef = createRef();
     const formElementRef = useRef();
@@ -42,7 +42,6 @@ export default function InputWrapper({ sanitizeHanlder,...rest }) {
         <form aria-label="form" onSubmit={resetInputValue} ref={formElementRef} {...rest}>
             <Label htmlFor="searchInput" optionalLabelText="Please enter a name :" />
             <Input
-
                 minLength="3"
                 maxLength="50"
                 type="text"
