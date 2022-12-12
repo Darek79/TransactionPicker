@@ -2,16 +2,13 @@ import { useContext } from 'react';
 import SearchQueryContext from '../../context/searchQueryContext';
 import PointsItem from './PointsItem';
 import './../../styles/pointsWrapperElement.css';
+import SpinnerComponent from './SpinnerComponent';
 
 export default function PointsWrapper({ ...rest }) {
     const { transActionArray, transActionDetails, isLoading } = useContext(SearchQueryContext);
 
     if (isLoading) {
-        return (
-            <div className="pointsWrapper__main--spinner">
-                <img src="./spinner.gif" alt="spinner" />
-            </div>
-        );
+        return <SpinnerComponent className="pointsWrapper__main--spinner" spinnerSrc="./spinner.gif" />;
     }
     return (
         <div className="pointsWrapper__main">
