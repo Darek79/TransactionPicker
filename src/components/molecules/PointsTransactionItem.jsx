@@ -1,16 +1,16 @@
-export default function PointsItem({ total_transactions, points_total, date }) {
+export default function PointsItem({ total_transactions, points_total, date, date_txt, transaction_txt, points_txt }) {
     return (
         <header>
             <p>
-                {`Date: `}
+                {date_txt}
                 <span>{`${date}`}</span>
             </p>
             <p>
-                {`Total transactions: `}
+                {transaction_txt}
                 <span>{`${total_transactions}`}</span>
             </p>
             <p>
-                {`Points: `}
+                {points_txt}
                 <span>{`${points_total}`}</span>
             </p>
         </header>

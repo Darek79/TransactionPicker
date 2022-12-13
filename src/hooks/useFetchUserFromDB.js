@@ -1,19 +1,21 @@
-import { useState, useEffect } from 'react';
-import fetchFromDB from '../utils/fetchFromDB';
+import { useState, useEffect, useContext } from 'react';
+import ErrorContext from '../context/errorContext';
 import { filterForUser } from '../utils/filterForUser';
 
-export function useFetchUserFromDB(value, url) {
+export function useFetchUserFromDB(value, url, fetchHandler) {
+    const { setErrorMessage } = useContext(ErrorContext);
     const [isLoading, setLoading] = useState(false);
-    const [error, setErrorMessage] = useState('');
+    const [error, setError] = useState('');
     const [userArray, setUserArray] = useState([]);
     useEffect(() => {
         if (value) {
             setLoading(p => !p);
-            fetchFromDB(url).then(fetchedTransactions => {
-                setErrorMessage(p => '');
+            fetchHandler(url).then(fetchedTransactions => {
+                setError(p => '');
                 if (Array.isArray(fetchedTransactions)) {
                     const userArray = filterForUser(fetchedTransactions, value);
                     if (!userArray.length) {
+                        setError('----');
                         setErrorMessage('Sorry no user was found');
                         setLoading(p => !p);
                         return;
@@ -22,11 +24,11 @@ export function useFetchUserFromDB(value, url) {
                     setLoading(p => !p);
                 }
                 if (typeof fetchedTransactions === 'string') {
-                    setErrorMessage(fetchedTransactions);
+                    setError(fetchedTransactions);
                 }
             });
         }
-    }, [value, url]);
+    }, [value, url, fetchHandler, setErrorMessage]);
 
     return [userArray, error, isLoading];
 }

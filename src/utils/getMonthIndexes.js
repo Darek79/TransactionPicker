@@ -2,11 +2,11 @@ export function getMonthIndexes(arr) {
     let monthIndexes = [];
     let lastIndex = 0;
     arr.forEach((el, i) => {
-        const dateActualIndex = new Date(el.date);
+        const dateActualIndex = new Date(el.date).getMonth();
         let dateActualIndexNext;
         if (i + 1 < arr.length) {
-            dateActualIndexNext = new Date(arr[i + 1].date);
-            if (dateActualIndex.getMonth() < dateActualIndexNext.getMonth()) {
+            dateActualIndexNext = new Date(arr[i + 1].date).getMonth();
+            if (dateActualIndex < dateActualIndexNext) {
                 if (!monthIndexes.length) {
                     monthIndexes.push([lastIndex, i]);
                     lastIndex = i + 1;
