@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import ErrorContext from '../context/errorContext';
 import { filterForUser } from '../utils/filterForUser';
 
 export function useFetchUserFromDB(value, url, fetchHandler) {
+    const { setErrorMessage } = useContext(ErrorContext);
     const [isLoading, setLoading] = useState(false);
-    const [error, setErrorMessage] = useState('');
+    const [error, setError] = useState('');
     const [userArray, setUserArray] = useState([]);
     useEffect(() => {
         if (value) {
             setLoading(p => !p);
             fetchHandler(url).then(fetchedTransactions => {
-                setErrorMessage(p => '');
+                setError(p => '');
                 if (Array.isArray(fetchedTransactions)) {
                     const userArray = filterForUser(fetchedTransactions, value);
                     if (!userArray.length) {
+                        setError('----');
                         setErrorMessage('Sorry no user was found');
                         setLoading(p => !p);
                         return;
@@ -21,11 +24,11 @@ export function useFetchUserFromDB(value, url, fetchHandler) {
                     setLoading(p => !p);
                 }
                 if (typeof fetchedTransactions === 'string') {
-                    setErrorMessage(fetchedTransactions);
+                    setError(fetchedTransactions);
                 }
             });
         }
-    }, [value, url, fetchHandler]);
+    }, [value, url, fetchHandler, setErrorMessage]);
 
     return [userArray, error, isLoading];
 }

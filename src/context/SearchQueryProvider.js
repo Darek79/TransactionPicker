@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { useMemo, useReducer } from 'react';
 import SearchQueryContext from './searchQueryContext';
-import { useFetchUserFromDB } from './../hooks/useFetchUserFromDB';
-import { useCalcPoints } from '../hooks/useCalcPoints';
-import fetchFromDB from '../utils/fetchFromDB';
+import DispatchQueryContext from './disptachQueryContext';
+import reducer from '../reducer/mainReducer';
 
 export default function SearchQueryProvider({ url, children }) {
-    const [value, setValue] = useState('');
-    const [userArray, error, isLoading] = useFetchUserFromDB(value, url, fetchFromDB);
-    const [transActionArray, transActionDetails] = useCalcPoints(userArray, error);
+    const [state, dispatch] = useReducer(reducer, '');
+
+    const dipatchFn = useMemo(() => {
+        function inputSetter(value) {
+            dispatch({ type: 'SETINPUT', value });
+        }
+        return { inputSetter };
+    }, []);
+
     return (
-        <SearchQueryContext.Provider
-            value={{ value, setValue, transActionArray, transActionDetails, error, isLoading }}
-        >
-            {children}
-        </SearchQueryContext.Provider>
+        <DispatchQueryContext.Provider value={dipatchFn}>
+            <SearchQueryContext.Provider value={{ state }}>{children}</SearchQueryContext.Provider>
+        </DispatchQueryContext.Provider>
     );
 }
