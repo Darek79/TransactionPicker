@@ -47,7 +47,9 @@ describe('test App components', () => {
         const headerElements = await screen.findByRole('heading', { level: 2 });
         expect(headerElements).toHaveTextContent('Sammie Todeo');
         expect(headerElements).toBeVisible();
-        const pointsElement = await screen.findAllByText('Points:');
+        const pointsElement = await screen.findAllByText('Date:');
         expect(pointsElement.length).toBe(3);
+        const totalPoints = await screen.findAllByText('Total Points:');
+        expect(totalPoints.length).toBe(1);
     });
 });
